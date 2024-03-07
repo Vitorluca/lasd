@@ -60,13 +60,13 @@ assign LEDG[8] = ~KEY[1];
 DECOD_4x7 #(7) myDecod01( //estanciacao do modulo mux 
 
 .i0(SW[3:0]), 
-.out_decod(HEX0[0:7])
+.out_decod(HEX0[0:6])
 );
 
 DECOD_4x7 #(7) myDecod02( //estanciacao do modulo mux 
 
 .i0(SW[7:4]), 
-.out_decod(HEX1[0:7])
+.out_decod(HEX1[0:6])
 );
 
 
