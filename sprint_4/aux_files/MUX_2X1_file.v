@@ -1,4 +1,4 @@
-module MUX_2X1 #(parameter BITS=3/*desafio*/)(
+module MUX_2X1 #(parameter BITS=8/*desafio*/)(
 
 //input data
 input [BITS-1:0] i0,

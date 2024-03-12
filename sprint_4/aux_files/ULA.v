@@ -1,4 +1,5 @@
-module ULA_8X8 (
+// Code your design here
+module ULA (
 
 //input data
 input [7:0] SrcA, //entrada de dados A
@@ -6,13 +7,10 @@ input [7:0] SrcB, //entrada de dados B
 input [2:0] ULAControl, //seletor de operacao da ULA
 
 //output signal
-output reg [7:0] ULAResult, output reg Z);
+  output reg [7:0] ULAResult, output reg Zero);
 	always@(*)
 		begin	
-		if(ULAResult == 0)
-			Z = 0;
-		else
-			Z = 1;
+
 		case(ULAControl)
 			3'b000	:	ULAResult = SrcA + SrcB; //soma
 			3'b001	:	ULAResult = SrcA + ~SrcB + 1; //subtracao
@@ -27,5 +25,9 @@ output reg [7:0] ULAResult, output reg Z);
 							end
 			default	:	ULAResult = 0;
 	endcase
+    if(ULAResult == 0)
+		Zero = 1;
+	else
+		Zero = 0;
 	end
 endmodule

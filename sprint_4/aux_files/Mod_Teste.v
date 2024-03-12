@@ -39,6 +39,12 @@ LCD_TEST MyLCD (
 wire w_clock_1hz;
 wire [3:0] w_cont;
 
+wire [7:0] w_rd1SrcA; //saida de dados rd1
+wire [7:0]  w_rd2; //entrada para o mux ed2
+wire [7:0] w_SrcB; //saida do mux
+wire [7:0] w_ULAResultWd3; //saida da ula
+wire w_Zero;
+
 assign LEDG[0]= w_clock_1hz;
 
 
@@ -52,8 +58,8 @@ assign HEX0[5] = SW[5];
 assign HEX0[6] = SW[6];
 */
 assign LEDG[8] = ~KEY[1];
-
-
+assign LEDG[8] = ~KEY[2];
+assign w_Zero = LEDG[0]; //atribui continuamente led 0 ao fio zero
 
 
 //display 7 segmentos
@@ -95,16 +101,36 @@ DECOD_4x7 #(4) myDecod2( //estanciacao do modulo mux
 register_8BITS myReg( //estanciar registrador
 .clock_reg(KEY[1]),	
 .reset(KEY[2]),
-.write_enable(SW[17]),
+.write_enable(1'b1),
 .write_address(SW[16:14]),
 .write_data(SW[7:0]),
 .register_address1(SW[13:11]),
-.register_address2(SW[10:8]),
+.register_address2(3'b010),
 .register_data1(w_d0x0[7:0]),
 .register_data2(w_d0x1[7:0])
 
 
 );
+
+MUX_2X1 #(8) myMUX(
+.i0(w_rd2),
+.i1(8'h07),
+.sel(SW[17]),
+.out_mux(w_SrcB)
+
+);
+
+ULA myULA(
+.SrcA(w_rd1SrcA),
+.SrcB(w_SrcB),
+.ULAControl(SW[10:8]),
+.Zero(w_Zero),
+.ULAResult(w_ULAResultWd3)
+);
+
+assign w_d1x0 = w_rd2;
+assign w_d1x1 = w_SrcB;
+assign w_d0x4 = w_ULAResultWd3;
 
 endmodule
 

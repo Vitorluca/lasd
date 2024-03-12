@@ -1,5 +1,5 @@
 EDA Netlist Writer report for Mod_Teste
-Wed Mar  6 23:57:47 2024
+Fri Mar 08 11:59:50 2024
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -36,7 +36,7 @@ applicable agreement for further details.
 +-------------------------------------------------------------------+
 ; EDA Netlist Writer Summary                                        ;
 +---------------------------+---------------------------------------+
-; EDA Netlist Writer Status ; Successful - Wed Mar  6 23:57:47 2024 ;
+; EDA Netlist Writer Status ; Successful - Fri Mar 08 11:59:50 2024 ;
 ; Revision Name             ; Mod_Teste                             ;
 ; Top-level Entity Name     ; Mod_Teste                             ;
 ; Family                    ; Cyclone II                            ;
@@ -66,16 +66,16 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------------------------+------------------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------+
-; Simulation Generated Files                                                                                                     ;
-+--------------------------------------------------------------------------------------------------------------------------------+
-; Generated Files                                                                                                                ;
-+--------------------------------------------------------------------------------------------------------------------------------+
-; /home/vitorluca/Documentos/ufcg/3_periodo/lab_arquitetura/repositorio/lasd/sprint_4/simulation/modelsim/Mod_Teste.vho          ;
-; /home/vitorluca/Documentos/ufcg/3_periodo/lab_arquitetura/repositorio/lasd/sprint_4/simulation/modelsim/Mod_Teste_fast.vho     ;
-; /home/vitorluca/Documentos/ufcg/3_periodo/lab_arquitetura/repositorio/lasd/sprint_4/simulation/modelsim/Mod_Teste_vhd.sdo      ;
-; /home/vitorluca/Documentos/ufcg/3_periodo/lab_arquitetura/repositorio/lasd/sprint_4/simulation/modelsim/Mod_Teste_vhd_fast.sdo ;
-+--------------------------------------------------------------------------------------------------------------------------------+
++-------------------------------------------------------------+
+; Simulation Generated Files                                  ;
++-------------------------------------------------------------+
+; Generated Files                                             ;
++-------------------------------------------------------------+
+; F:/lasd/sprint_4/simulation/modelsim/Mod_Teste.vho          ;
+; F:/lasd/sprint_4/simulation/modelsim/Mod_Teste_fast.vho     ;
+; F:/lasd/sprint_4/simulation/modelsim/Mod_Teste_vhd.sdo      ;
+; F:/lasd/sprint_4/simulation/modelsim/Mod_Teste_vhd_fast.sdo ;
++-------------------------------------------------------------+
 
 
 +-----------------------------+
@@ -84,13 +84,13 @@ applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit EDA Netlist Writer
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Wed Mar  6 23:57:46 2024
+    Info: Processing started: Fri Mar 08 11:59:47 2024
 Info: Command: quartus_eda --read_settings_files=off --write_settings_files=off Mod_Teste -c Mod_Teste
-Info (204026): Generated files "Mod_Teste.vho", "Mod_Teste_fast.vho", "Mod_Teste_vhd.sdo" and "Mod_Teste_vhd_fast.sdo" in directory "/home/vitorluca/Documentos/ufcg/3_periodo/lab_arquitetura/repositorio/lasd/sprint_4/simulation/modelsim/" for EDA simulation tool
+Info (204026): Generated files "Mod_Teste.vho", "Mod_Teste_fast.vho", "Mod_Teste_vhd.sdo" and "Mod_Teste_vhd_fast.sdo" in directory "F:/lasd/sprint_4/simulation/modelsim/" for EDA simulation tool
 Info: Quartus II 64-Bit EDA Netlist Writer was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 806 megabytes
-    Info: Processing ended: Wed Mar  6 23:57:47 2024
-    Info: Elapsed time: 00:00:01
+    Info: Peak virtual memory: 4535 megabytes
+    Info: Processing ended: Fri Mar 08 11:59:51 2024
+    Info: Elapsed time: 00:00:04
     Info: Total CPU time (on all processors): 00:00:01
 
 

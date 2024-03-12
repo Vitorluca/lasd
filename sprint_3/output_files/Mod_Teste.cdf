@@ -4,7 +4,7 @@ JedecChain;
 	DefaultMfr(6E);
 
 	P ActionCode(Cfg)
-		Device PartName(EP2C35F672) Path("E:/LASD/2023.2/Vitor_119110521/sprint_3/output_files/") File("Mod_Teste.sof") MfrSpec(OpMask(1));
+		Device PartName(EP2C35F672) Path("F:/lasd/sprint_3/output_files/") File("Mod_Teste.sof") MfrSpec(OpMask(1));
 
 ChainEnd;
 
