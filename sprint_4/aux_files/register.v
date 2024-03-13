@@ -19,6 +19,13 @@ always@(posedge clock_reg or negedge reset)begin
 	if(!reset) begin
 		register[0] = 0;
 		register[1] = 0;
+		register[2] = 0;
+		register[3] = 0;
+		register[4] = 0;
+		register[5] = 0;
+		register[6] = 0;
+		register[7] = 0;
+		
 	end		
 	else if(write_enable == 1)begin
 		register[write_address] = write_data;

@@ -58,7 +58,7 @@ assign HEX0[5] = SW[5];
 assign HEX0[6] = SW[6];
 */
 assign LEDG[8] = ~KEY[1];
-assign LEDG[8] = ~KEY[2];
+assign LEDG[7] = ~KEY[2];
 assign w_Zero = LEDG[0]; //atribui continuamente led 0 ao fio zero
 
 
