@@ -1,4 +1,5 @@
 vendor_name = ModelSim
+source_file = 1, /home/vitorluca/Documentos/ufcg/3_periodo/lab_arquitetura/repositorio/lasd/sprint_4/aux_files/Mod_Teste_ex.bdf
 source_file = 1, /home/vitorluca/Documentos/ufcg/3_periodo/lab_arquitetura/repositorio/lasd/sprint_4/aux_files/ULA.v
 source_file = 1, /home/vitorluca/Documentos/ufcg/3_periodo/lab_arquitetura/repositorio/lasd/sprint_4/aux_files/register.v
 source_file = 1, /home/vitorluca/Documentos/ufcg/3_periodo/lab_arquitetura/repositorio/lasd/sprint_4/aux_files/contador.v
