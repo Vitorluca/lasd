@@ -53,7 +53,7 @@ reg [16:0] register_concatenation; //armazena os valores dos inputs concatenados
 								ULASrc = 1;
 								ULAControl = 3'b000;
 							end
-			17'b00100110000000000	:	begin //ADDi
+			17'b00100110001111111	:	begin //ADDi
 								RegWrite = 1;
 								ULASrc = 1;
 								ULAControl = 3'b000;
