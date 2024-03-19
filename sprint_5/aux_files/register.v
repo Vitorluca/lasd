@@ -11,7 +11,7 @@ input [3:0]register_address2,
 
  
 //output signal
-output reg [7:0] register_data1,register_data2);
+output reg [7:0] register_data1,register_data2,output reg x0,x1,x2,x3,x4,x5,x6,x7);
 
 
 reg [7:0] register [7:0];
@@ -29,10 +29,17 @@ always@(posedge clock_reg or negedge reset)begin
 	end		
 	else if(write_enable == 1)begin
 		register[write_address] = write_data;
-		register[0] = 0;
+		register[0] = 0; //register 0 deve ser igual a zero
 	end
 		//register[1][register_address2] = write_data[write_address];
-	
+		x0 = register[0];
+		x1 = register[1];
+		x2 = register[2];
+		x3 = register[3];
+		x4 = register[4];
+		x5 = register[5];
+		x6 = register[6];
+		x7 = register[7];
 	
 	  register_data1 = register[register_address1];
 	  register_data2 = register[register_address2];
