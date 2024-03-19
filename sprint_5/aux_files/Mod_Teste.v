@@ -39,27 +39,32 @@ LCD_TEST MyLCD (
 wire w_clock_1hz;
 wire [3:0] w_cont;
 
+//ula
+wire w_ULASrc; //define se ovalor vem de registrador ou de constante
+wire [2:0] w_ULAControl;//define qual operacao da ula sera executada
 wire [7:0] w_rd1SrcA; //saida de dados rd1
 wire [7:0]  w_rd2; //entrada para o mux ed2
 wire [7:0] w_SrcB; //saida do mux
-wire [7:0] w_ULAResultWd3; //saida da ula
+wire [7:0] w_ULAResult; //saida da ula
 wire w_Zero;
 
-assign LEDG[0]= w_clock_1hz;
+//program couter
+wire [7:0] w_PC; //fio de saida PC
+wire [7:0] w_PCp4; // entrada do program counter
+
+//registrador
+wire w_RegWrite;
+
+//memory instruction
+wire [31:0] w_Inst;//instrucao em linguagem de maquina
 
 
-/*questao 01 - active display 7 segment
-assign HEX0[0] = SW[0];
-assign HEX0[1] = SW[1];
-assign HEX0[2] = SW[2];
-assign HEX0[3] = SW[3];
-assign HEX0[4] = SW[4];
-assign HEX0[5] = SW[5];
-assign HEX0[6] = SW[6];
-*/
-assign LEDG[8] = ~KEY[1];
-assign LEDG[7] = ~KEY[2];
-assign LEDG[6] = w_Zero; //atribui continuamente led 0 ao fio zero
+assign LEDG[0]= w_clock_1hz; // led clock divisor de frequencia 
+
+
+assign LEDG[8] = ~KEY[1]; // clock led
+assign LEDG[7] = ~KEY[2]; // reset led
+assign LEDG[6] = w_Zero; //Z ula led
 
 
 //display 7 segmentos
@@ -76,46 +81,36 @@ DECOD_4x7 #(7) myDecod02( //estanciacao do modulo mux
 );
 
 
-//questao 03-c
-/*DIV_freq myDiv_freq(
-.speed_clock(CLOCK_50),
-.low_clock(w_clock_1hz),
-.reset(SW[17])
-);
-*/
-
-/*questao 4
-cont_number myCont(
-.low_clock(w_clock_1hz),
-.cont(w_cont)
-);
-*/
-/*
-DECOD_4x7 #(4) myDecod2( //estanciacao do modulo mux 
-
-.i0(w_cont), 
-.out_decod(HEX4[0:6])
-);
-*/
-
 register_8BITS myReg( //estanciar registrador
+//input
 .clock_reg(KEY[1]),	
 .reset(KEY[2]),
-.write_enable(1'b1),
-.write_address(SW[16:14]),
-.write_data(SW[7:0]),
-.register_address1(SW[13:11]),
-.register_address2(3'b010),
+.write_enable(w_RegWrite),
+.write_address(w_Inst[11:7]),
+.write_data(w_ULAResult),
+.register_address1(w_Inst[19:15]),
+.register_address2(w_Inst[24:20]),
+
+//output
 .register_data1(w_rd1SrcA),
-.register_data2(w_rd2)
-
-
+.register_data2(w_rd2),
+.x0(w_d0x0),
+.x1(w_d0x1),
+.x2(w_d0x2),
+.x3(w_d0x3),
+.x4(w_d1x0),
+.x5(w_d1x1),
+.x6(w_d1x2),
+.x7(w_d1x3)
 );
 
 MUX_2X1 myMUX(
+//input
 .i0(w_rd2),
-.i1(8'h07),
-.sel(SW[17]),
+.i1(w_Inst[31:20]),
+.sel(w_ULASrc),
+
+//output
 .out_mux(w_SrcB)
 
 );
@@ -123,14 +118,61 @@ MUX_2X1 myMUX(
 ULA myULA(
 .SrcA(w_rd1SrcA),
 .SrcB(w_SrcB),
-.ULAControl(SW[10:8]),
+.ULAControl(w_ULAControl),
 .Zero(w_Zero),
-.ULAResult(w_ULAResultWd3)
+.ULAResult(w_ULAResult)
 );
-assign w_d0x0 = w_rd1SrcA;
-assign w_d1x0 = w_rd2;
-assign w_d1x1 = w_SrcB;
-assign w_d0x4 = w_ULAResultWd3;
+
+assign w_d0x4 = w_PC;//atribui continuamente o valor W_PC ao LCD
+
+CONTROL_UNIT my_unit_control(
+//input
+.OP(w_Inst[6:0]),
+.Funct3(w_Inst[14:12]),
+.Funct7(w_Inst[31:25]),
+//output
+.ULAControl(w_ULAControl),
+.ULASrc(w_ULASrc),
+.RegWrite(w_RegWrite)
+);
+
+//define operation for ula 
+assign LEDR[0] = w_ULAControl[0];
+assign LEDR[1] = w_ULAControl[1];
+assign LEDR[2] = w_ULAControl[2];
+
+assign LEDR[3] = w_ULASrc; //sinal seletor do mux
+assign LEDR[4] = w_RegWrite // signal enable for register 
+
+//armazena o programa que vai ser executado
+INSTRUCTION_MEMORY my_instruction_memory( 
+//input
+.A(w_PC), //define qual parte do codigo vai ser executada
+
+//output
+.RD(w_Inst) //instrucao de memoria que define quais funcoes serao executadas
+);
+
+//somador - move o indereco para o indereco da proxima instrucao
+ADDER_4 my_adder(
+//input
+.DATA_ADDER(w_PC),//indereco da instrucao atual
+
+//output
+.out_adder(w_PCp4) //indereco da intrucao seguinte
+);
+
+//define o indereco da proxima intrucao executa na intruction memory
+PROGRAM_COUNTER_8 my_program_counter(
+//input
+.clock_reg(KEY[1]),
+.reset(KEY[2]),
+.PCin(w_PCp4),
+
+//output
+.PC(w_PC)
+);
+
 
 endmodule
 

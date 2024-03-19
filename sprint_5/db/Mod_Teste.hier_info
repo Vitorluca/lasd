@@ -795,6 +795,14 @@ register_data2[4] <= Mux11.DB_MAX_OUTPUT_PORT_TYPE
 register_data2[5] <= Mux10.DB_MAX_OUTPUT_PORT_TYPE
 register_data2[6] <= Mux9.DB_MAX_OUTPUT_PORT_TYPE
 register_data2[7] <= Mux8.DB_MAX_OUTPUT_PORT_TYPE
+x0 <= register[0][0].DB_MAX_OUTPUT_PORT_TYPE
+x1 <= register[1][0].DB_MAX_OUTPUT_PORT_TYPE
+x2 <= register[2][0].DB_MAX_OUTPUT_PORT_TYPE
+x3 <= register[3][0].DB_MAX_OUTPUT_PORT_TYPE
+x4 <= register[4][0].DB_MAX_OUTPUT_PORT_TYPE
+x5 <= register[5][0].DB_MAX_OUTPUT_PORT_TYPE
+x6 <= register[6][0].DB_MAX_OUTPUT_PORT_TYPE
+x7 <= register[7][0].DB_MAX_OUTPUT_PORT_TYPE
 
 
 |Mod_Teste|MUX_2X1:myMUX
