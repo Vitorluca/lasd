@@ -67,19 +67,54 @@ assign LEDG[7] = ~KEY[2]; // reset led
 assign LEDG[6] = w_Zero; //Z ula led
 
 
-//display 7 segmentos
+//displays 7 segmentos
+DECOD_4x7 #(7) myDecod00( //estanciacao do modulo mux 
+
+.i0(w_Inst[3:0]), 
+.out_decod(HEX0[0:6])
+);
+
 DECOD_4x7 #(7) myDecod01( //estanciacao do modulo mux 
 
-.i0(SW[3:0]), 
-.out_decod(HEX0[0:6])
+.i0(w_Inst[7:4]), 
+.out_decod(HEX1[0:6])
 );
 
 DECOD_4x7 #(7) myDecod02( //estanciacao do modulo mux 
 
-.i0(SW[7:4]), 
-.out_decod(HEX1[0:6])
+.i0(w_Inst[11:8]), 
+.out_decod(HEX2[0:6])
 );
 
+DECOD_4x7 #(7) myDecod03( //estanciacao do modulo mux 
+
+.i0(w_Inst[15:12]), 
+.out_decod(HEX3[0:6])
+);
+
+DECOD_4x7 #(7) myDecod04( //estanciacao do modulo mux 
+
+.i0(w_Inst[19:16]), 
+.out_decod(HEX4[0:6])
+);
+
+DECOD_4x7 #(7) myDecod05( //estanciacao do modulo mux 
+
+.i0(w_Inst[23:20]), 
+.out_decod(HEX5[0:6])
+);
+
+DECOD_4x7 #(7) myDecod06( //estanciacao do modulo mux 
+
+.i0(w_Inst[27:24]), 
+.out_decod(HEX6[0:6])
+);
+
+DECOD_4x7 #(7) myDecod07( //estanciacao do modulo mux 
+
+.i0(w_Inst[31:28]), 
+.out_decod(HEX7[0:6])
+);
 
 register_8BITS myReg( //estanciar registrador
 //input
@@ -142,7 +177,7 @@ assign LEDR[1] = w_ULAControl[1];
 assign LEDR[2] = w_ULAControl[2];
 
 assign LEDR[3] = w_ULASrc; //sinal seletor do mux
-assign LEDR[4] = w_RegWrite // signal enable for register 
+assign LEDR[4] = w_RegWrite; // signal enable for register 
 
 //armazena o programa que vai ser executado
 INSTRUCTION_MEMORY my_instruction_memory( 
