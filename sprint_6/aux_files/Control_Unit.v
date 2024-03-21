@@ -22,7 +22,7 @@ reg [16:0] register_concatenation; //armazena os valores dos inputs concatenados
 								RegWrite = 1;
 								ULASrc = 0;
 								ULAControl = 3'b000;
-								ImmSrc = x;
+								ImmSrc = 0;//x - TANTO FAZ
 								MemWrite = 0;
 								ResultSrc = 0;
 								
@@ -31,37 +31,91 @@ reg [16:0] register_concatenation; //armazena os valores dos inputs concatenados
 								RegWrite = 1;
 								ULASrc = 0;
 								ULAControl = 3'b001;
+								ImmSrc = 0;//x - TANTO FAZ
+								MemWrite = 0;
+								ResultSrc = 0;
 							end
 			17'b01100111110000000	:	begin //AND
 								RegWrite = 1;
 								ULASrc = 0;
 								ULAControl = 3'b010;
+								ImmSrc = 0;//x - TANTO FAZ
+								MemWrite = 0;
+								ResultSrc = 0;
 							end
 			17'b01100111100000000	:	begin //OR
 								RegWrite = 1;
 								ULASrc = 0;
 								ULAControl = 3'b011;
+								ImmSrc = 0;//x - TANTO FAZ
+								MemWrite = 0;
+								ResultSrc = 0;
 							end
 			17'b01100111000000000	:	begin //XOR
 								RegWrite = 1;
 								ULASrc = 0;
 								ULAControl = 3'b100;
+								ImmSrc = 0;//x - TANTO FAZ
+								MemWrite = 0;
+								ResultSrc = 0;
 							end
 			17'b01100110100000000	:	begin //SLT
 								RegWrite = 1;
 								ULASrc = 0;
 								ULAControl = 3'b101;
+								ImmSrc = 0;//x - TANTO FAZ
+								MemWrite = 0;
+								ResultSrc = 0;
 							end
-			17'b00100110001111111	:	begin //ADDi
+			17'b00100110001111111	:	begin //ADDi para x=1
 								RegWrite = 1;
 								ULASrc = 1;
 								ULAControl = 3'b000;
+								ImmSrc = 0;
+								MemWrite = 0;
+								ResultSrc = 0;
 							end
-			17'b00100110000000000	:	begin //ADDi
+			17'b00100110000000000	:	begin //ADDi para x=0
 								RegWrite = 1;
 								ULASrc = 1;
 								ULAControl = 3'b000;
+								ImmSrc = 0;
+								MemWrite = 0;
+								ResultSrc = 0;
 							end
+			17'b00000110001111111	:	begin //LB para x=1
+								RegWrite = 1;
+								ULASrc = 1;
+								ULAControl = 3'b000;
+								ImmSrc = 0;
+								MemWrite = 0;
+								ResultSrc = 1;
+							end
+			17'b00000110000000000	:	begin //LB para x=0
+								RegWrite = 1;
+								ULASrc = 1;
+								ULAControl = 3'b000;
+								ImmSrc = 0;
+								MemWrite = 0;
+								ResultSrc = 1;
+							end
+			17'b01000110001111111	:	begin //SB para x=1
+								RegWrite = 0;
+								ULASrc = 1;
+								ULAControl = 3'b000;
+								ImmSrc = 1;
+								MemWrite = 1;
+								ResultSrc = 1;//x - TANTO FAZ
+							end
+			17'b01000110000000000	:	begin //SB para x=0
+								RegWrite = 0;
+								ULASrc = 1;
+								ULAControl = 3'b000;
+								ImmSrc = 1;
+								MemWrite = 1;
+								ResultSrc = 1;//x - TANTO FAZ
+							end
+							
 			default	: register_concatenation = 17'b00000000000000000;//null
 		endcase
 		end

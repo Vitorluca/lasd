@@ -58,6 +58,14 @@ wire w_RegWrite;
 //memory instruction
 wire [31:0] w_Inst;//instrucao em linguagem de maquina
 
+wire w_ImmSrc;
+wire w_MemWrite;
+wire w_ResultSrc;
+
+wire [7:0] w_Wd3;
+wire [7:0] w_Imm;
+wire [7:0] w_RData;
+
 
 assign LEDG[0]= w_clock_1hz; // led clock divisor de frequencia 
 
@@ -168,7 +176,10 @@ CONTROL_UNIT my_unit_control(
 //output
 .ULAControl(w_ULAControl),
 .ULASrc(w_ULASrc),
-.RegWrite(w_RegWrite)
+.RegWrite(w_RegWrite),
+.ResultSrc(w_ResultSrc),
+.MemWrite(w_MemWrite),
+.ImmSrc(w_ImmSrc)
 );
 
 //define operation for ula 
@@ -208,6 +219,17 @@ PROGRAM_COUNTER_8 my_program_counter(
 .PC(w_PC)
 );
 
+DATA_MEMORY my_data_memory(
+//inputs
+.rst(KEY[2]),
+.clk(KEY[1]),
+.WE(w_MemWrite),
+.A(w_ULAResult),
+.WD(w_rd2),
+
+//output
+.RD(w_RData)
+);
 
 endmodule
 

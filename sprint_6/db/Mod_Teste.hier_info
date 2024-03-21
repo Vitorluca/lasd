@@ -1222,6 +1222,9 @@ ULAControl[1] <= ULAControl[1]$latch.DB_MAX_OUTPUT_PORT_TYPE
 ULAControl[2] <= ULAControl[2]$latch.DB_MAX_OUTPUT_PORT_TYPE
 ULASrc <= ULASrc$latch.DB_MAX_OUTPUT_PORT_TYPE
 RegWrite <= <VCC>
+ImmSrc <= <GND>
+MemWrite <= <GND>
+ResultSrc <= <GND>
 
 
 |Mod_Teste|INSTRUCTION_MEMORY:my_instruction_memory
