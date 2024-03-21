@@ -9,7 +9,7 @@ input [6:0] Funct7, // define funçoes especificas em instrucoes complexas
  
  
 //RegWrite - dado vai ser escrito em reg,ULASr - reg ou const, ULAControl- qual instrucao
-output reg [2:0] ULAControl, output reg ULASrc, output reg RegWrite);
+output reg [2:0] ULAControl, output reg ULASrc, output reg RegWrite, output reg ImmSrc, output reg MemWrite, output reg ResultSrc);
 
 reg [16:0] register_concatenation; //armazena os valores dos inputs concatenados
 
@@ -22,6 +22,10 @@ reg [16:0] register_concatenation; //armazena os valores dos inputs concatenados
 								RegWrite = 1;
 								ULASrc = 0;
 								ULAControl = 3'b000;
+								ImmSrc = x;
+								MemWrite = 0;
+								ResultSrc = 0;
+								
 							end
 			17'b01100110000100000	:	begin //SUB
 								RegWrite = 1;
