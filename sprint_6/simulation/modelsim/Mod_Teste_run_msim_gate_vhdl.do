@@ -5,5 +5,5 @@ if {[file exists gate_work]} {
 vlib gate_work
 vmap work gate_work
 
-vcom -93 -work work {Mod_Teste.vho}
+vcom -93 -work work {Mod_Teste_fast.vho}
 

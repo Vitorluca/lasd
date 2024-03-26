@@ -58,6 +58,15 @@ wire w_RegWrite;
 //memory instruction
 wire [31:0] w_Inst;//instrucao em linguagem de maquina
 
+//unit control 
+wire w_ImmSrc;
+wire w_MemWrite;
+wire w_ResultSrc;
+
+wire [7:0] w_Wd3;
+wire [7:0] w_Imm;
+wire [7:0] w_RData;
+
 
 assign LEDG[0]= w_clock_1hz; // led clock divisor de frequencia 
 
@@ -118,11 +127,11 @@ DECOD_4x7 #(7) myDecod07( //estanciacao do modulo mux
 
 register_8BITS myReg( //estanciar registrador
 //input
-.clock_reg(KEY[1]),	
+.clock_reg(w_clock_1hz/*KEY[1]*/), //trocar clock para 1 Hz
 .reset(KEY[2]),
 .write_enable(w_RegWrite),
 .write_address(w_Inst[11:7]),
-.write_data(w_ULAResult),
+.write_data(w_Wd3),
 .register_address1(w_Inst[19:15]),
 .register_address2(w_Inst[24:20]),
 
@@ -139,16 +148,39 @@ register_8BITS myReg( //estanciar registrador
 .x7(w_d1x3)
 );
 
-MUX_2X1 myMUX(
+MUX_2X1 MuxULASrc( //MUX da ULA
 //input
 .i0(w_rd2),
-.i1(w_Inst[31:20]),
+.i1(w_Imm),
 .sel(w_ULASrc),
 
 //output
 .out_mux(w_SrcB)
 
 );
+
+MUX_2X1 MuxImmSrc( //MUX da instrucao tipo I
+//input
+.i0(w_Inst[31:20]),
+.i1({w_Inst[31:25], w_Inst[11:7]}), //concatena os dados
+.sel(w_ImmSrc),
+
+//output
+.out_mux(w_Imm)
+
+);
+
+MUX_2X1 MuxResSrc( //define se o dado usado e o armazenado na memoria
+//input
+.i0(w_ULAResult),
+.i1(w_RData),
+.sel(w_ResultSrc),
+
+//output
+.out_mux(w_Wd3)
+
+);
+
 
 ULA myULA(
 .SrcA(w_rd1SrcA),
@@ -168,7 +200,10 @@ CONTROL_UNIT my_unit_control(
 //output
 .ULAControl(w_ULAControl),
 .ULASrc(w_ULASrc),
-.RegWrite(w_RegWrite)
+.RegWrite(w_RegWrite),
+.ImmSrc(w_ImmSrc),
+.MemWrite(w_MemWrite),
+.ResultSrc(w_ResultSrc)
 );
 
 //define operation for ula 
@@ -177,7 +212,10 @@ assign LEDR[1] = w_ULAControl[1];
 assign LEDR[2] = w_ULAControl[2];
 
 assign LEDR[3] = w_ULASrc; //sinal seletor do mux
-assign LEDR[4] = w_RegWrite; // signal enable for register 
+assign LEDR[4] = w_RegWrite; // signal enable for register
+assign LEDR[5] = w_ImmSrc; //seletor do MUX MuxImmSrc
+assign LEDR[6] = w_MemWrite;//ativa a memoria ram 
+assign LEDR[7] = w_ResultSrc;//define a origem dos dados armazenados no register
 
 //armazena o programa que vai ser executado
 INSTRUCTION_MEMORY my_instruction_memory( 
@@ -200,7 +238,7 @@ ADDER_4 my_adder(
 //define o indereco da proxima intrucao executa na intruction memory
 PROGRAM_COUNTER_8 my_program_counter(
 //input
-.clock_reg(KEY[1]),
+.clock_reg(w_clock_1hz/*KEY[1]*/),
 .reset(KEY[2]),
 .PCin(w_PCp4),
 
@@ -208,15 +246,27 @@ PROGRAM_COUNTER_8 my_program_counter(
 .PC(w_PC)
 );
 
+DATA_MEMORY my_data_memory(
+//inputs
+.clk(w_clock_1hz/*KEY[1]*/),
+.rst(KEY[2]),
+.WE(w_MemWrite),
+.WD(w_rd2),
+.A(w_ULAResult),
+
+//outputs
+.RD(w_RData)	
+);
+
+//divisor de frequencia
+DIV_freq myDiv_freq(
+.speed_clock(CLOCK_50),
+.low_clock(w_clock_1hz)
+);
+
 
 endmodule
 
-
-
-//assign i0[7:0] = SW[7:0]
-//assign i1[7:0] = SW[15:8]
-//assign sel = SW[17]
-//assign LEDR[7:0] = out[7:0]
 
 
 
