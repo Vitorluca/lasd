@@ -1,8 +1,8 @@
-module MUX_2X1 (
+module #(parameter BITS=8) MUX_2X1 (
 
 //input data
-input [7:0] i0,
-input [7:0] i1,
+input [BITS-1:0] i0,
+input [BITS-1:0] i1,
 input sel,
 
 //output signal

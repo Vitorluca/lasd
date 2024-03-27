@@ -159,7 +159,7 @@ MUX_2X1 MuxULASrc( //MUX da ULA
 
 );
 
-MUX_2X1 MuxImmSrc( //MUX da instrucao tipo I
+MUX_2X1 #(12) MuxImmSrc( //MUX da instrucao tipo I
 //input
 .i0(w_Inst[31:20]),
 .i1({w_Inst[31:25], w_Inst[11:7]}), //concatena os dados

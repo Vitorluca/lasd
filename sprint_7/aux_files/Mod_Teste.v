@@ -59,13 +59,20 @@ wire w_RegWrite;
 wire [31:0] w_Inst;//instrucao em linguagem de maquina
 
 //unit control 
-wire w_ImmSrc;
+wire [1:0] w_ImmSrc;
 wire w_MemWrite;
 wire w_ResultSrc;
 
 wire [7:0] w_Wd3;
 wire [7:0] w_Imm;
 wire [7:0] w_RData;
+
+//fios sprint 7
+wire w_PCSrc;
+wire w_Branch;
+
+wire [7:0] w_ImmPC;
+wire [7:0] w_PCn;
 
 
 assign LEDG[0]= w_clock_1hz; // led clock divisor de frequencia 
@@ -159,7 +166,7 @@ MUX_2X1 MuxULASrc( //MUX da ULA
 
 );
 
-MUX_2X1 MuxImmSrc( //MUX da instrucao tipo I
+MUX_2X1 #(12) MuxImmSrc( //MUX da instrucao tipo I
 //input
 .i0(w_Inst[31:20]),
 .i1({w_Inst[31:25], w_Inst[11:7]}), //concatena os dados

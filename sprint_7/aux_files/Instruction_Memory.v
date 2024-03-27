@@ -9,13 +9,13 @@ input [7:0] A, //input decodificador
 output reg [31:0] RD);
 	always@(*)
 		case(A)
-			8'h00	: RD = 32'h0AB00093;//addi x1, x0, 0xAB
-			8'h04	: RD = 32'h00100523;//sb x1, 0xA(x0)
-			8'h08	: RD = 32'h00A00103;//lb x2, 0xA(x0)
-			8'h0C	: RD = 32'h002005A3;//sb x2, 0xB(x0)
-			8'h10	: RD = 32'h00B00183;//lb x3, 0xB(x0)
-			8'h14	: RD = 32'h00300623;//sb x3, 0xC(x0)
-			8'h18	: RD = 32'h00C00203;//lb x4, 0xC(x0)
+			8'h00	: RD = 32'h00700093;//addi x1, x0, 7
+			8'h04	: RD = 32'h00300193;//addi x3, x0, 3
+			8'h08	: RD = 32'hFFF00113;//init: addi x2, x0, -1
+			8'h0C	: RD = 32'h00110113;//incremento: addi x2, x2, 1
+			8'h10	: RD = 32'h003123B3;//slt x7, x2, x3
+			8'h14	: RD = 32'hFE208AE3;//beq x1, x2, init
+			8'h18	: RD = 32'hFE000AE3;//beq x0, x0, incremento
 			default	: RD = 32'h00000000;//null
 		endcase
 	
