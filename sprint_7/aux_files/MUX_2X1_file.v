@@ -1,4 +1,4 @@
-module #(parameter BITS=8) MUX_2X1 (
+module MUX_2X1 #(parameter BITS=8)(
 
 //input data
 input [BITS-1:0] i0,

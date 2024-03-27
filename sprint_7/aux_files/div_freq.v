@@ -11,13 +11,13 @@ output reg low_clock);
 reg [26:0] cont;
 	always@(posedge speed_clock or negedge reset)begin
 			if(!reset)
-				cont = 0;
+				cont <= 0;
 			else begin
-				cont = cont + 1;
+				cont <= cont + 1;
 			
-			if(cont == 25000000 - 1) begin
-				low_clock = ~low_clock;
-				cont = 0;
+			if(cont == (25000000/2) - 1) begin
+				low_clock <= ~low_clock;
+				cont <= 0;
 				
 			end
 		end

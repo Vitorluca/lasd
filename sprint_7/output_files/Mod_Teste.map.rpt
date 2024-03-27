@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Mod_Teste
-Tue Mar 26 15:22:13 2024
+Wed Mar 27 12:16:58 2024
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -29,19 +29,23 @@ Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edit
  21. Parameter Settings for User Entity Instance: DECOD_4x7:myDecod05
  22. Parameter Settings for User Entity Instance: DECOD_4x7:myDecod06
  23. Parameter Settings for User Entity Instance: DECOD_4x7:myDecod07
- 24. Port Connectivity Checks: "DIV_freq:myDiv_freq"
- 25. Port Connectivity Checks: "MUX_2X1:MuxImmSrc"
- 26. Port Connectivity Checks: "register_8BITS:myReg"
- 27. Port Connectivity Checks: "DECOD_4x7:myDecod07"
- 28. Port Connectivity Checks: "DECOD_4x7:myDecod06"
- 29. Port Connectivity Checks: "DECOD_4x7:myDecod05"
- 30. Port Connectivity Checks: "DECOD_4x7:myDecod04"
- 31. Port Connectivity Checks: "DECOD_4x7:myDecod03"
- 32. Port Connectivity Checks: "DECOD_4x7:myDecod02"
- 33. Port Connectivity Checks: "DECOD_4x7:myDecod01"
- 34. Port Connectivity Checks: "DECOD_4x7:myDecod00"
- 35. Elapsed Time Per Partition
- 36. Analysis & Synthesis Messages
+ 24. Parameter Settings for User Entity Instance: MUX_2X1:MuxULASrc
+ 25. Parameter Settings for User Entity Instance: MUX_4X1:MuxImmSrc
+ 26. Parameter Settings for User Entity Instance: MUX_2X1:MuxResSrc
+ 27. Parameter Settings for User Entity Instance: MUX_2X1:MuxPCSrc
+ 28. Port Connectivity Checks: "DIV_freq:myDiv_freq"
+ 29. Port Connectivity Checks: "MUX_4X1:MuxImmSrc"
+ 30. Port Connectivity Checks: "register_8BITS:myReg"
+ 31. Port Connectivity Checks: "DECOD_4x7:myDecod07"
+ 32. Port Connectivity Checks: "DECOD_4x7:myDecod06"
+ 33. Port Connectivity Checks: "DECOD_4x7:myDecod05"
+ 34. Port Connectivity Checks: "DECOD_4x7:myDecod04"
+ 35. Port Connectivity Checks: "DECOD_4x7:myDecod03"
+ 36. Port Connectivity Checks: "DECOD_4x7:myDecod02"
+ 37. Port Connectivity Checks: "DECOD_4x7:myDecod01"
+ 38. Port Connectivity Checks: "DECOD_4x7:myDecod00"
+ 39. Elapsed Time Per Partition
+ 40. Analysis & Synthesis Messages
 
 
 
@@ -67,7 +71,7 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Tue Mar 26 15:22:13 2024           ;
+; Analysis & Synthesis Status        ; Successful - Wed Mar 27 12:16:58 2024           ;
 ; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; Mod_Teste                                       ;
 ; Top-level Entity Name              ; Mod_Teste                                       ;
@@ -185,19 +189,22 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------------+-----------------+------------------------+--------------------------------------------------------------------------------------------------------------------+---------+
 ; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                                                                                       ; Library ;
 +----------------------------------+-----------------+------------------------+--------------------------------------------------------------------------------------------------------------------+---------+
-; aux_files/data_memory.v          ; yes             ; User Verilog HDL File  ; /home/vitorluca/Documentos/ufcg/3_periodo/lab_arquitetura/repositorio/lasd/sprint_6/aux_files/data_memory.v        ;         ;
-; aux_files/Program_Counter.v      ; yes             ; User Verilog HDL File  ; /home/vitorluca/Documentos/ufcg/3_periodo/lab_arquitetura/repositorio/lasd/sprint_6/aux_files/Program_Counter.v    ;         ;
-; aux_files/Instruction_Memory.v   ; yes             ; User Verilog HDL File  ; /home/vitorluca/Documentos/ufcg/3_periodo/lab_arquitetura/repositorio/lasd/sprint_6/aux_files/Instruction_Memory.v ;         ;
-; aux_files/Control_Unit.v         ; yes             ; User Verilog HDL File  ; /home/vitorluca/Documentos/ufcg/3_periodo/lab_arquitetura/repositorio/lasd/sprint_6/aux_files/Control_Unit.v       ;         ;
-; aux_files/Adder.v                ; yes             ; User Verilog HDL File  ; /home/vitorluca/Documentos/ufcg/3_periodo/lab_arquitetura/repositorio/lasd/sprint_6/aux_files/Adder.v              ;         ;
-; aux_files/ULA.v                  ; yes             ; User Verilog HDL File  ; /home/vitorluca/Documentos/ufcg/3_periodo/lab_arquitetura/repositorio/lasd/sprint_6/aux_files/ULA.v                ;         ;
-; aux_files/register.v             ; yes             ; User Verilog HDL File  ; /home/vitorluca/Documentos/ufcg/3_periodo/lab_arquitetura/repositorio/lasd/sprint_6/aux_files/register.v           ;         ;
-; aux_files/div_freq.v             ; yes             ; User Verilog HDL File  ; /home/vitorluca/Documentos/ufcg/3_periodo/lab_arquitetura/repositorio/lasd/sprint_6/aux_files/div_freq.v           ;         ;
-; aux_files/DECODIFICADOR.v        ; yes             ; User Verilog HDL File  ; /home/vitorluca/Documentos/ufcg/3_periodo/lab_arquitetura/repositorio/lasd/sprint_6/aux_files/DECODIFICADOR.v      ;         ;
-; aux_files/MUX_2X1_file.v         ; yes             ; User Verilog HDL File  ; /home/vitorluca/Documentos/ufcg/3_periodo/lab_arquitetura/repositorio/lasd/sprint_6/aux_files/MUX_2X1_file.v       ;         ;
-; aux_files/Mod_Teste.v            ; yes             ; User Verilog HDL File  ; /home/vitorluca/Documentos/ufcg/3_periodo/lab_arquitetura/repositorio/lasd/sprint_6/aux_files/Mod_Teste.v          ;         ;
-; aux_files/LCD_TEST2.v            ; yes             ; User Verilog HDL File  ; /home/vitorluca/Documentos/ufcg/3_periodo/lab_arquitetura/repositorio/lasd/sprint_6/aux_files/LCD_TEST2.v          ;         ;
-; aux_files/LCD_Controller.v       ; yes             ; User Verilog HDL File  ; /home/vitorluca/Documentos/ufcg/3_periodo/lab_arquitetura/repositorio/lasd/sprint_6/aux_files/LCD_Controller.v     ;         ;
+; aux_files/Adder_Imm.v            ; yes             ; User Verilog HDL File  ; /home/vitorluca/Documentos/ufcg/3_periodo/lab_arquitetura/repositorio/lasd/sprint_7/aux_files/Adder_Imm.v          ;         ;
+; aux_files/MUX4x1.v               ; yes             ; User Verilog HDL File  ; /home/vitorluca/Documentos/ufcg/3_periodo/lab_arquitetura/repositorio/lasd/sprint_7/aux_files/MUX4x1.v             ;         ;
+; aux_files/AND_2X1.v              ; yes             ; User Verilog HDL File  ; /home/vitorluca/Documentos/ufcg/3_periodo/lab_arquitetura/repositorio/lasd/sprint_7/aux_files/AND_2X1.v            ;         ;
+; aux_files/data_memory.v          ; yes             ; User Verilog HDL File  ; /home/vitorluca/Documentos/ufcg/3_periodo/lab_arquitetura/repositorio/lasd/sprint_7/aux_files/data_memory.v        ;         ;
+; aux_files/Program_Counter.v      ; yes             ; User Verilog HDL File  ; /home/vitorluca/Documentos/ufcg/3_periodo/lab_arquitetura/repositorio/lasd/sprint_7/aux_files/Program_Counter.v    ;         ;
+; aux_files/Instruction_Memory.v   ; yes             ; User Verilog HDL File  ; /home/vitorluca/Documentos/ufcg/3_periodo/lab_arquitetura/repositorio/lasd/sprint_7/aux_files/Instruction_Memory.v ;         ;
+; aux_files/Control_Unit.v         ; yes             ; User Verilog HDL File  ; /home/vitorluca/Documentos/ufcg/3_periodo/lab_arquitetura/repositorio/lasd/sprint_7/aux_files/Control_Unit.v       ;         ;
+; aux_files/Adder.v                ; yes             ; User Verilog HDL File  ; /home/vitorluca/Documentos/ufcg/3_periodo/lab_arquitetura/repositorio/lasd/sprint_7/aux_files/Adder.v              ;         ;
+; aux_files/ULA.v                  ; yes             ; User Verilog HDL File  ; /home/vitorluca/Documentos/ufcg/3_periodo/lab_arquitetura/repositorio/lasd/sprint_7/aux_files/ULA.v                ;         ;
+; aux_files/register.v             ; yes             ; User Verilog HDL File  ; /home/vitorluca/Documentos/ufcg/3_periodo/lab_arquitetura/repositorio/lasd/sprint_7/aux_files/register.v           ;         ;
+; aux_files/div_freq.v             ; yes             ; User Verilog HDL File  ; /home/vitorluca/Documentos/ufcg/3_periodo/lab_arquitetura/repositorio/lasd/sprint_7/aux_files/div_freq.v           ;         ;
+; aux_files/DECODIFICADOR.v        ; yes             ; User Verilog HDL File  ; /home/vitorluca/Documentos/ufcg/3_periodo/lab_arquitetura/repositorio/lasd/sprint_7/aux_files/DECODIFICADOR.v      ;         ;
+; aux_files/MUX_2X1_file.v         ; yes             ; User Verilog HDL File  ; /home/vitorluca/Documentos/ufcg/3_periodo/lab_arquitetura/repositorio/lasd/sprint_7/aux_files/MUX_2X1_file.v       ;         ;
+; aux_files/Mod_Teste.v            ; yes             ; User Verilog HDL File  ; /home/vitorluca/Documentos/ufcg/3_periodo/lab_arquitetura/repositorio/lasd/sprint_7/aux_files/Mod_Teste.v          ;         ;
+; aux_files/LCD_TEST2.v            ; yes             ; User Verilog HDL File  ; /home/vitorluca/Documentos/ufcg/3_periodo/lab_arquitetura/repositorio/lasd/sprint_7/aux_files/LCD_TEST2.v          ;         ;
+; aux_files/LCD_Controller.v       ; yes             ; User Verilog HDL File  ; /home/vitorluca/Documentos/ufcg/3_periodo/lab_arquitetura/repositorio/lasd/sprint_7/aux_files/LCD_Controller.v     ;         ;
 +----------------------------------+-----------------+------------------------+--------------------------------------------------------------------------------------------------------------------+---------+
 
 
@@ -4627,6 +4634,46 @@ Note: In order to hide this table in the UI and the text report file, please set
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
++----------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX_2X1:MuxULASrc ;
++----------------+-------+---------------------------------------+
+; Parameter Name ; Value ; Type                                  ;
++----------------+-------+---------------------------------------+
+; BITS           ; 8     ; Signed Integer                        ;
++----------------+-------+---------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX_4X1:MuxImmSrc ;
++----------------+-------+---------------------------------------+
+; Parameter Name ; Value ; Type                                  ;
++----------------+-------+---------------------------------------+
+; BITS           ; 12    ; Signed Integer                        ;
++----------------+-------+---------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX_2X1:MuxResSrc ;
++----------------+-------+---------------------------------------+
+; Parameter Name ; Value ; Type                                  ;
++----------------+-------+---------------------------------------+
+; BITS           ; 8     ; Signed Integer                        ;
++----------------+-------+---------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX_2X1:MuxPCSrc ;
++----------------+-------+--------------------------------------+
+; Parameter Name ; Value ; Type                                 ;
++----------------+-------+--------------------------------------+
+; BITS           ; 8     ; Signed Integer                       ;
++----------------+-------+--------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
 +-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 ; Port Connectivity Checks: "DIV_freq:myDiv_freq"                                                                                                                         ;
 +-------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
@@ -4636,14 +4683,13 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "MUX_2X1:MuxImmSrc"                                                                                                                                                               ;
-+------+-------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port ; Type  ; Severity ; Details                                                                                                                                                                           ;
-+------+-------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; i0   ; Input ; Warning  ; Input port expression (12 bits) is wider than the input port (8 bits) it drives.  The 4 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
-; i1   ; Input ; Warning  ; Input port expression (12 bits) is wider than the input port (8 bits) it drives.  The 4 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
-+------+-------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
++-----------------------------------------------+
+; Port Connectivity Checks: "MUX_4X1:MuxImmSrc" ;
++-------+-------+----------+--------------------+
+; Port  ; Type  ; Severity ; Details            ;
++-------+-------+----------+--------------------+
+; i2[0] ; Input ; Info     ; Stuck at GND       ;
++-------+-------+----------+--------------------+
 
 
 +-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -4752,9 +4798,15 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Tue Mar 26 15:22:09 2024
+    Info: Processing started: Wed Mar 27 12:16:55 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Mod_Teste -c Mod_Teste
 Warning (20028): Parallel compilation is not licensed and has been disabled
+Info (12021): Found 1 design units, including 1 entities, in source file aux_files/Adder_Imm.v
+    Info (12023): Found entity 1: ADDER_8
+Info (12021): Found 1 design units, including 1 entities, in source file aux_files/MUX4x1.v
+    Info (12023): Found entity 1: MUX_4X1
+Info (12021): Found 1 design units, including 1 entities, in source file aux_files/AND_2X1.v
+    Info (12023): Found entity 1: AND2X1
 Info (12021): Found 1 design units, including 1 entities, in source file aux_files/data_memory.v
     Info (12023): Found entity 1: DATA_MEMORY
 Info (12021): Found 1 design units, including 1 entities, in source file aux_files/ULA_TB.sv
@@ -4788,8 +4840,8 @@ Info (12021): Found 1 design units, including 1 entities, in source file aux_fil
 Info (12021): Found 1 design units, including 1 entities, in source file aux_files/LCD_Controller.v
     Info (12023): Found entity 1: LCD_Controller
 Info (12127): Elaborating entity "Mod_Teste" for the top level hierarchy
-Warning (10034): Output port "LEDG[5..0]" at Mod_Teste.v(10) has no driver
-Warning (10034): Output port "LEDR[17..8]" at Mod_Teste.v(11) has no driver
+Warning (10034): Output port "LEDG[5..1]" at Mod_Teste.v(10) has no driver
+Warning (10034): Output port "LEDR[17..10]" at Mod_Teste.v(11) has no driver
 Warning (10034): Output port "UART_TXD" at Mod_Teste.v(13) has no driver
 Info (12128): Elaborating entity "LCD_TEST" for hierarchy "LCD_TEST:MyLCD"
 Warning (10230): Verilog HDL assignment warning at LCD_TEST2.v(60): truncated value with size 32 to match size of target (18)
@@ -4800,6 +4852,10 @@ Warning (10230): Verilog HDL assignment warning at LCD_Controller.v(66): truncat
 Info (12128): Elaborating entity "DECOD_4x7" for hierarchy "DECOD_4x7:myDecod00"
 Info (12128): Elaborating entity "register_8BITS" for hierarchy "register_8BITS:myReg"
 Info (12128): Elaborating entity "MUX_2X1" for hierarchy "MUX_2X1:MuxULASrc"
+Info (12128): Elaborating entity "MUX_4X1" for hierarchy "MUX_4X1:MuxImmSrc"
+Warning (10230): Verilog HDL assignment warning at MUX4x1.v(15): truncated value with size 12 to match size of target (8)
+Warning (10230): Verilog HDL assignment warning at MUX4x1.v(18): truncated value with size 12 to match size of target (8)
+Warning (10230): Verilog HDL assignment warning at MUX4x1.v(21): truncated value with size 12 to match size of target (8)
 Info (12128): Elaborating entity "ULA" for hierarchy "ULA:myULA"
 Warning (10230): Verilog HDL assignment warning at ULA.v(16): truncated value with size 32 to match size of target (8)
 Info (12128): Elaborating entity "CONTROL_UNIT" for hierarchy "CONTROL_UNIT:my_unit_control"
@@ -4809,9 +4865,12 @@ Warning (10240): Verilog HDL Always Construct warning at Control_Unit.v(20): inf
 Warning (10240): Verilog HDL Always Construct warning at Control_Unit.v(20): inferring latch(es) for variable "ImmSrc", which holds its previous value in one or more paths through the always construct
 Warning (10240): Verilog HDL Always Construct warning at Control_Unit.v(20): inferring latch(es) for variable "MemWrite", which holds its previous value in one or more paths through the always construct
 Warning (10240): Verilog HDL Always Construct warning at Control_Unit.v(20): inferring latch(es) for variable "ResultSrc", which holds its previous value in one or more paths through the always construct
+Warning (10240): Verilog HDL Always Construct warning at Control_Unit.v(20): inferring latch(es) for variable "Branch", which holds its previous value in one or more paths through the always construct
+Info (10041): Inferred latch for "Branch" at Control_Unit.v(20)
 Info (10041): Inferred latch for "ResultSrc" at Control_Unit.v(20)
 Info (10041): Inferred latch for "MemWrite" at Control_Unit.v(20)
-Info (10041): Inferred latch for "ImmSrc" at Control_Unit.v(20)
+Info (10041): Inferred latch for "ImmSrc[0]" at Control_Unit.v(20)
+Info (10041): Inferred latch for "ImmSrc[1]" at Control_Unit.v(20)
 Info (10041): Inferred latch for "ULAControl[0]" at Control_Unit.v(20)
 Info (10041): Inferred latch for "ULAControl[1]" at Control_Unit.v(20)
 Info (10041): Inferred latch for "ULAControl[2]" at Control_Unit.v(20)
@@ -4819,12 +4878,14 @@ Info (10041): Inferred latch for "ULASrc" at Control_Unit.v(20)
 Info (10041): Inferred latch for "RegWrite" at Control_Unit.v(20)
 Info (12128): Elaborating entity "INSTRUCTION_MEMORY" for hierarchy "INSTRUCTION_MEMORY:my_instruction_memory"
 Info (12128): Elaborating entity "ADDER_4" for hierarchy "ADDER_4:my_adder"
+Info (12128): Elaborating entity "ADDER_8" for hierarchy "ADDER_8:myadder8"
 Info (12128): Elaborating entity "PROGRAM_COUNTER_8" for hierarchy "PROGRAM_COUNTER_8:my_program_counter"
 Info (12128): Elaborating entity "DATA_MEMORY" for hierarchy "DATA_MEMORY:my_data_memory"
 Warning (10240): Verilog HDL Always Construct warning at data_memory.v(22): inferring latch(es) for variable "j", which holds its previous value in one or more paths through the always construct
 Info (12128): Elaborating entity "DIV_freq" for hierarchy "DIV_freq:myDiv_freq"
 Warning (10230): Verilog HDL assignment warning at div_freq.v(16): truncated value with size 32 to match size of target (27)
-Warning (12241): 11 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Info (12128): Elaborating entity "AND2X1" for hierarchy "AND2X1:myAND"
+Warning (12241): 10 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Warning (13034): The following nodes have both tri-state and non-tri-state drivers
     Warning (13035): Inserted always-enabled tri-state buffer between "LCD_DATA[0]" and its non-tri-state driver.
     Warning (13035): Inserted always-enabled tri-state buffer between "LCD_DATA[1]" and its non-tri-state driver.
@@ -4835,8 +4896,10 @@ Warning (13034): The following nodes have both tri-state and non-tri-state drive
     Warning (13035): Inserted always-enabled tri-state buffer between "LCD_DATA[6]" and its non-tri-state driver.
     Warning (13035): Inserted always-enabled tri-state buffer between "LCD_DATA[7]" and its non-tri-state driver.
 Warning (13030): Reduced the following open-drain buffers that are fed by GND
-    Warning (13031): Reduced fanout from the always-enabled open-drain buffer "CONTROL_UNIT:my_unit_control|ImmSrc" to the output pin "LEDR[5]" to GND
-    Warning (13031): Reduced fanout from the always-enabled open-drain buffer "CONTROL_UNIT:my_unit_control|ResultSrc" to the output pin "LEDR[7]" to GND
+    Warning (13031): Reduced fanout from the always-enabled open-drain buffer "CONTROL_UNIT:my_unit_control|ImmSrc[0]" to the output pin "LEDR[5]" to GND
+    Warning (13031): Reduced fanout from the always-enabled open-drain buffer "CONTROL_UNIT:my_unit_control|ResultSrc" to the output pin "LEDR[8]" to GND
+    Warning (13031): Reduced fanout from the always-enabled open-drain buffer "CONTROL_UNIT:my_unit_control|ImmSrc[1]" to the output pin "LEDR[6]" to GND
+    Warning (13031): Reduced fanout from the always-enabled open-drain buffer "CONTROL_UNIT:my_unit_control|ImmSrc[1]" to the output pin "LEDG[6]" to GND
 Warning (13009): TRI or OPNDRN buffers permanently enabled
     Warning (13010): Node "LCD_DATA[0]~synth"
     Warning (13010): Node "LCD_DATA[1]~synth"
@@ -4882,17 +4945,17 @@ Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "HEX4[2]" is stuck at GND
     Warning (13410): Pin "HEX4[1]" is stuck at GND
     Warning (13410): Pin "HEX4[0]" is stuck at GND
-    Warning (13410): Pin "HEX5[6]" is stuck at GND
-    Warning (13410): Pin "HEX5[5]" is stuck at GND
-    Warning (13410): Pin "HEX5[4]" is stuck at GND
-    Warning (13410): Pin "HEX5[3]" is stuck at GND
+    Warning (13410): Pin "HEX5[6]" is stuck at VCC
+    Warning (13410): Pin "HEX5[5]" is stuck at VCC
+    Warning (13410): Pin "HEX5[4]" is stuck at VCC
+    Warning (13410): Pin "HEX5[3]" is stuck at VCC
     Warning (13410): Pin "HEX5[2]" is stuck at GND
-    Warning (13410): Pin "HEX5[1]" is stuck at VCC
-    Warning (13410): Pin "HEX5[0]" is stuck at VCC
-    Warning (13410): Pin "HEX6[6]" is stuck at GND
+    Warning (13410): Pin "HEX5[1]" is stuck at GND
+    Warning (13410): Pin "HEX5[0]" is stuck at GND
+    Warning (13410): Pin "HEX6[6]" is stuck at VCC
     Warning (13410): Pin "HEX6[5]" is stuck at GND
     Warning (13410): Pin "HEX6[4]" is stuck at GND
-    Warning (13410): Pin "HEX6[3]" is stuck at VCC
+    Warning (13410): Pin "HEX6[3]" is stuck at GND
     Warning (13410): Pin "HEX6[2]" is stuck at GND
     Warning (13410): Pin "HEX6[1]" is stuck at GND
     Warning (13410): Pin "HEX6[0]" is stuck at GND
@@ -4962,10 +5025,10 @@ Info (21057): Implemented 275 device resources after synthesis - the final resou
     Info (21059): Implemented 89 output pins
     Info (21060): Implemented 80 bidirectional pins
     Info (21061): Implemented 81 logic cells
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 147 warnings
-    Info: Peak virtual memory: 598 megabytes
-    Info: Processing ended: Tue Mar 26 15:22:13 2024
-    Info: Elapsed time: 00:00:04
-    Info: Total CPU time (on all processors): 00:00:04
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 153 warnings
+    Info: Peak virtual memory: 589 megabytes
+    Info: Processing ended: Wed Mar 27 12:16:58 2024
+    Info: Elapsed time: 00:00:03
+    Info: Total CPU time (on all processors): 00:00:03
 
 

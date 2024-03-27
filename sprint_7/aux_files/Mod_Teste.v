@@ -36,7 +36,8 @@ LCD_TEST MyLCD (
 
 //---------- modifique a partir daqui --------
 
-wire w_clock_1hz;
+//wire w_clock_1hz;
+wire w_clock_2hz;
 wire [3:0] w_cont;
 
 //ula
@@ -75,7 +76,7 @@ wire [7:0] w_ImmPC;
 wire [7:0] w_PCn;
 
 
-assign LEDG[0]= w_clock_1hz; // led clock divisor de frequencia 
+assign LEDG[0]= w_clock_2hz; // led clock divisor de frequencia 
 
 
 assign LEDG[8] = ~KEY[1]; // clock led
@@ -134,7 +135,7 @@ DECOD_4x7 #(7) myDecod07( //estanciacao do modulo mux
 
 register_8BITS myReg( //estanciar registrador
 //input
-.clock_reg(w_clock_1hz/*KEY[1]*/), //trocar clock para 1 Hz
+.clock_reg(w_clock_2hz/*KEY[1]*/), //trocar clock para 1 Hz
 .reset(KEY[2]),
 .write_enable(w_RegWrite),
 .write_address(w_Inst[11:7]),
@@ -156,7 +157,7 @@ register_8BITS myReg( //estanciar registrador
 );
 
 MUX_2X1 MuxULASrc( //MUX da ULA
-//input
+//input 
 .i0(w_rd2),
 .i1(w_Imm),
 .sel(w_ULASrc),
@@ -166,10 +167,12 @@ MUX_2X1 MuxULASrc( //MUX da ULA
 
 );
 
-MUX_2X1 #(12) MuxImmSrc( //MUX da instrucao tipo I
+MUX_4X1 #(12) MuxImmSrc( //MUX4x1 da instrucao tipo I
 //input
 .i0(w_Inst[31:20]),
 .i1({w_Inst[31:25], w_Inst[11:7]}), //concatena os dados
+.i2({ w_Inst[7], w_Inst[30:25], w_Inst[11:8],1'b0}),
+
 .sel(w_ImmSrc),
 
 //output
@@ -188,6 +191,19 @@ MUX_2X1 MuxResSrc( //define se o dado usado e o armazenado na memoria
 
 );
 
+MUX_2X1 MuxPCSrc( //fonte do dado do program counter - PC
+//input
+.i0(w_PCp4),
+.i1(w_ImmPC),
+
+.sel(w_PCSrc),
+
+//output
+.out_mux(w_PCn)
+
+);
+
+
 
 ULA myULA(
 .SrcA(w_rd1SrcA),
@@ -204,13 +220,15 @@ CONTROL_UNIT my_unit_control(
 .OP(w_Inst[6:0]),
 .Funct3(w_Inst[14:12]),
 .Funct7(w_Inst[31:25]),
+
 //output
 .ULAControl(w_ULAControl),
 .ULASrc(w_ULASrc),
 .RegWrite(w_RegWrite),
 .ImmSrc(w_ImmSrc),
 .MemWrite(w_MemWrite),
-.ResultSrc(w_ResultSrc)
+.ResultSrc(w_ResultSrc),
+.Branch(w_Branch)
 );
 
 //define operation for ula 
@@ -220,9 +238,13 @@ assign LEDR[2] = w_ULAControl[2];
 
 assign LEDR[3] = w_ULASrc; //sinal seletor do mux
 assign LEDR[4] = w_RegWrite; // signal enable for register
-assign LEDR[5] = w_ImmSrc; //seletor do MUX MuxImmSrc
-assign LEDR[6] = w_MemWrite;//ativa a memoria ram 
-assign LEDR[7] = w_ResultSrc;//define a origem dos dados armazenados no register
+
+assign LEDR[5] = w_ImmSrc[0]; //seletor do MUX MuxImmSrc
+assign LEDR[6] = w_ImmSrc[1]; //seletor do MUX MuxImmSrc
+
+assign LEDR[7] = w_MemWrite;//ativa a memoria ram 
+assign LEDR[8] = w_ResultSrc;//define a origem dos dados armazenados no register
+assign LEDR[9] = w_Branch; //sinal de mudança de fluxo
 
 //armazena o programa que vai ser executado
 INSTRUCTION_MEMORY my_instruction_memory( 
@@ -242,12 +264,21 @@ ADDER_4 my_adder(
 .out_adder(w_PCp4) //indereco da intrucao seguinte
 );
 
+ADDER_8 myadder8(
+//inputs
+.DATA_ADDER0(w_Imm),
+.DATA_ADDER1(w_PC),
+
+//outputs
+.out_adder(w_ImmPC)
+);
+
 //define o indereco da proxima intrucao executa na intruction memory
 PROGRAM_COUNTER_8 my_program_counter(
 //input
-.clock_reg(w_clock_1hz/*KEY[1]*/),
+.clock_reg(w_clock_2hz/*KEY[1]*/),
 .reset(KEY[2]),
-.PCin(w_PCp4),
+.PCin(w_PCn),
 
 //output
 .PC(w_PC)
@@ -255,7 +286,7 @@ PROGRAM_COUNTER_8 my_program_counter(
 
 DATA_MEMORY my_data_memory(
 //inputs
-.clk(w_clock_1hz/*KEY[1]*/),
+.clk(w_clock_2hz/*KEY[1]*/),
 .rst(KEY[2]),
 .WE(w_MemWrite),
 .WD(w_rd2),
@@ -268,7 +299,16 @@ DATA_MEMORY my_data_memory(
 //divisor de frequencia
 DIV_freq myDiv_freq(
 .speed_clock(CLOCK_50),
-.low_clock(w_clock_1hz)
+.low_clock(w_clock_2hz)
+);
+
+AND2X1 myAND(
+//inputs
+.i0(w_Branch),
+.i1(w_Zero),
+
+//outputs
+.out_and(w_PCSrc)
 );
 
 
