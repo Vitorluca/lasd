@@ -1,0 +1,17 @@
+module MUX_2X1	(
+
+//input data
+input [7:0] i0,
+input [7:0] i1,
+input sel,
+
+//output signal
+output reg [7:0] out_mux);
+	always@(*) begin
+		if(sel == 0)
+			out_mux[7:0] = i0[7:0];
+		else
+			out_mux[7:0] = i1[7:0];
+	end
+	
+endmodule
