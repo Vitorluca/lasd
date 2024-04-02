@@ -260,7 +260,11 @@ DATA_MEMORY my_data_memory(
 
 //divisor de frequencia
 DIV_freq myDiv_freq(
+//inputs
 .speed_clock(CLOCK_50),
+.reset(KEY[2]),
+
+//output
 .low_clock(w_clock_1hz)
 );
 
