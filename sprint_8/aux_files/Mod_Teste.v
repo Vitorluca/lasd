@@ -75,6 +75,12 @@ wire w_Branch;
 wire [7:0] w_ImmPC;
 wire [7:0] w_PCn;
 
+//paralelo output
+wire [7:0] w_DataOut;
+
+//paralelo input
+wire [7:0] w_DataIn;
+wire [7:0] w_RegData;
 
 assign LEDG[0]= w_clock_2hz; // led clock divisor de frequencia 
 
@@ -183,7 +189,7 @@ MUX_4X1 #(12) MuxImmSrc( //MUX4x1 da instrucao tipo I
 MUX_2X1 MuxResSrc( //define se o dado usado e o armazenado na memoria
 //input
 .i0(w_ULAResult),
-.i1(w_RData),
+.i1(w_RegData),
 .sel(w_ResultSrc),
 
 //output
@@ -314,6 +320,32 @@ AND2X1 myAND(
 //outputs
 .out_and(w_PCSrc)
 );
+
+Parallel_OUT my_parall_out(
+//inputs
+.EN(w_MemWrite),
+.Address(w_ULAResult),
+.RegData(w_rd2),
+.clk(w_clock_2hz),
+.rst(KEY[2]),
+
+//output
+.DataOut(w_DataOut)//saida de dados
+);
+
+assign w_d1x4 = w_DataOut; //atribuicao continua display
+
+Parallel_IN my_parall_in(
+//inputs
+.Address(w_ULAResult),
+.MemData(w_RData),
+.DataIn(w_DataIn),
+
+//output
+.RegData(w_RegData)//saida de dados
+);
+
+assign SW[7:0] = w_DataIn; //atribuicao continua chave input paralelo
 
 
 endmodule

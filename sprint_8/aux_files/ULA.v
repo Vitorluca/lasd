@@ -17,7 +17,7 @@ input [2:0] ULAControl, //seletor de operacao da ULA
 			3'b010	:	ULAResult = SrcA & SrcB; //and
 			3'b011	:	ULAResult = SrcA | SrcB; //or
 				3'b100	:	ULAResult = SrcA ^ SrcB; //xor
-			3'b101	:	begin
+			3'b101	:	begin //stl
 								if(SrcA < SrcB)
 									ULAResult = 1;
 								else

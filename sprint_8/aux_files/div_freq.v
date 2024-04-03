@@ -1,5 +1,4 @@
-//questao 3
-//questao 2-a e b
+
 module DIV_freq(
 
 //input data
@@ -15,7 +14,7 @@ reg [26:0] cont;
 			else begin
 				cont <= cont + 1;
 			
-			if(cont == (25000000/2) - 1) begin
+			if(cont == (25000000/10) - 1) begin //update frequencia
 				low_clock <= ~low_clock;
 				cont <= 0;
 				
