@@ -1,0 +1,77 @@
+------------------------------------------------------------
+TimeQuest Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow Model Setup 'DIV_freq:myDiv_freq|low_clock'
+Slack : -14.202
+TNS   : -21808.848
+
+Type  : Slow Model Setup 'CLOCK_50'
+Slack : -6.082
+TNS   : -171.749
+
+Type  : Slow Model Setup 'PROGRAM_COUNTER_8:my_program_counter|PC[0]'
+Slack : -2.326
+TNS   : -13.929
+
+Type  : Slow Model Hold 'CLOCK_50'
+Slack : -2.542
+TNS   : -2.542
+
+Type  : Slow Model Hold 'DIV_freq:myDiv_freq|low_clock'
+Slack : -2.400
+TNS   : -3.985
+
+Type  : Slow Model Hold 'PROGRAM_COUNTER_8:my_program_counter|PC[0]'
+Slack : -2.103
+TNS   : -10.016
+
+Type  : Slow Model Minimum Pulse Width 'CLOCK_50'
+Slack : -1.380
+TNS   : -80.380
+
+Type  : Slow Model Minimum Pulse Width 'DIV_freq:myDiv_freq|low_clock'
+Slack : -0.500
+TNS   : -2112.000
+
+Type  : Slow Model Minimum Pulse Width 'PROGRAM_COUNTER_8:my_program_counter|PC[0]'
+Slack : 0.500
+TNS   : 0.000
+
+Type  : Fast Model Setup 'DIV_freq:myDiv_freq|low_clock'
+Slack : -5.545
+TNS   : -8518.133
+
+Type  : Fast Model Setup 'CLOCK_50'
+Slack : -2.078
+TNS   : -42.390
+
+Type  : Fast Model Setup 'PROGRAM_COUNTER_8:my_program_counter|PC[0]'
+Slack : -0.266
+TNS   : -1.085
+
+Type  : Fast Model Hold 'CLOCK_50'
+Slack : -1.586
+TNS   : -1.586
+
+Type  : Fast Model Hold 'DIV_freq:myDiv_freq|low_clock'
+Slack : -1.501
+TNS   : -5.864
+
+Type  : Fast Model Hold 'PROGRAM_COUNTER_8:my_program_counter|PC[0]'
+Slack : -1.308
+TNS   : -7.002
+
+Type  : Fast Model Minimum Pulse Width 'CLOCK_50'
+Slack : -1.380
+TNS   : -80.380
+
+Type  : Fast Model Minimum Pulse Width 'DIV_freq:myDiv_freq|low_clock'
+Slack : -0.500
+TNS   : -2112.000
+
+Type  : Fast Model Minimum Pulse Width 'PROGRAM_COUNTER_8:my_program_counter|PC[0]'
+Slack : 0.500
+TNS   : 0.000
+
+------------------------------------------------------------
