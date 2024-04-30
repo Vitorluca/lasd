@@ -82,6 +82,11 @@ wire [7:0] w_DataOut;
 wire [7:0] w_DataIn;
 wire [7:0] w_RegData;
 
+//DMA wires
+wire [7:0] w_A_DMA; //fio do indereco para armazenamento na memoria 
+wire [7:0] w_WD_DMA;  //dato para ser armazenado na memoria
+wire [7:0] w_dest_addr;//fio do endereço de destino
+
 assign LEDG[0]= w_clock_2hz; // led clock divisor de frequencia 
 
 
@@ -297,6 +302,9 @@ DATA_MEMORY my_data_memory(
 .WE(w_MemWrite),
 .WD(w_rd2),
 .A(w_ULAResult),
+.start_DMA(1'b1), //escrita sempre ativa para o DMA
+.WD_DMA(w_WD_DMA),
+.A_DMA(w_A_DMA),
 
 //outputs
 .RD(w_RData)	
@@ -346,6 +354,27 @@ Parallel_IN my_parall_in(
 );
 
 assign w_DataIn = SW[7:0]; //atribuicao continua chave input paralelo
+
+
+dma_controler my_dma_controler(
+//inputs
+.clock_reg(w_clock_2hz),
+.reset(KEY[2]),
+.dest_addr(w_A_DMA),//indereço da memoria
+.data_input(w_DataIn),//dado de entrada
+
+//output
+.data(w_WD_DMA) //dado de saida
+);
+
+ADDER_4 dma_adder(
+//input
+.DATA_ADDER(w_dest_addr),//indereco da instrucao atual
+
+//output
+.out_adder(w_A_DMA) //indereco da intrucao seguinte
+);
+
 
 
 endmodule
